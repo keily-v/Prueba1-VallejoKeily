@@ -16,14 +16,14 @@ public class TestEstudiante {
         Estudiante[] estudiantes = new Estudiante[n];
 
         llenaEstudiante(estudiantes);
-        nroHmbres = porcentajeGenero(estudiantes);
-        datos.nextLine();
         System.out.println("El listado de estudiantes ordenados de mayor a menor nota");
-        
         mayorAmenor(estudiantes);
         for (Estudiante est : estudiantes) {
             System.out.println(est);
         }
+        nroHmbres = porcentajeGenero(estudiantes);
+        datos.nextLine();
+        
         System.out.println("El porcentaje de Hombres por encima del promedio : " + porentajePromedio(estudiantes, nroHmbres, 'm'));
         System.out.println("El porcentaje de Mujeres por encima del promedio : " + porentajePromedio(estudiantes, nroHmbres, 'f'));
         ne = notaAlta(estudiantes);
@@ -109,18 +109,18 @@ public class TestEstudiante {
     }
 
     public static void mayorAmenor(Estudiante est[]) {
-        for (int i = 0; i < est.length; i++) {
-            for (int j = i+1; j < est.length; j++){
-            if (est[i].getNota()< est[j].getNota()) {
-                double aux = est[i].getNota(); 
-                double aux1=est[j].getNota();
-                aux = est[j].getNota();
-                aux1=est[j].getNota();
-                aux1=aux; 
+        //método de la burbuja
+        for(int i=0;i<est.length;i++){
+            for(int j=0;j<est.length-1;j++){
+                if(est[j].getNota()< est[j+1].getNota()){
+                    Estudiante intercambio;
+                    intercambio=est[j];
+                    est[j]=est[j+1];
+                    est[j+1]=intercambio;
+                }
+
             }
         }
-         
-    } 
 }
 }
 
